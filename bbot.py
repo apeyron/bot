@@ -31,7 +31,4 @@ def webhook():
 
 
 if __name__ == '__main__':
-    try:
-        main()
-    except KeyboardInterrupt:
-		exit()
+	bot.polling(none_stop=True)
