@@ -2,33 +2,34 @@ import os
 import telebot
 import pyTelegramBotAPI
 from flask import Flask, request
+import random
+import request
+from telebot import types
 
-
+hi = ["Hello", "Hi", "hi", "Привет"]
 TOKEN = '210719426:AAFGyWjfVT5eLUC1DnPmTS1iJkuL-FpOeP4'
-bot = telebot.TeleBot(TOKEN)
+
+bbot = telebot.TeleBot(TOKEN)
+
+@bbot.message_handler(commands=['start'])
+def keyb(message):
+    k = types.ReplyKeyboardMarkup()
+    k.row('1', '2', '3')
+    bbot.send_message(message.chat.id, "Выберите пункт", reply_markup=k)
 
 
-@bot.message_handler(commands=['start'])
+""""@bbot.message_handler(commands=["start"])
 def start(message):
-    bot.reply_to(message, 'Hello, ' + message.from_user.first_name)
+    bbot.send_message(message.chat.id, "Ты с нами " + message.chat.first_name)
+"""
 
-
-@bot.message_handler(func=lambda message: True, content_types=['text'])
-def echo_message(message):
-    bot.reply_to(message, message.text)
-
-
-@server.route('/' + TOKEN, methods=['POST'])
-def getMessage():
-    bot.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
-    return "!", 200
-
-
-@server.route("/")
-def webhook():
-    bot.remove_webhook()
-    bot.set_webhook(url='https://botbankrot.herokuapp.com/' + TOKEN)
-    return "!", 200
+@bbot.message_handler(content_types=["text"])
+def main(message):
+    if message.text in hi:
+        bbot.send_message(message.chat.id, random.choice(hi))
+    else:
+        #message.text != "Hi":
+        bbot.send_message(message.chat.id, "Не понятно...")
 
 
 if __name__ == '__main__':
