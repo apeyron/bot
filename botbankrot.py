@@ -1,34 +1,36 @@
 # -*- coding: utf-8 -*-   
-
-import random
 import telebot
+import random
 import os
-import unicodedata
+from flask import Flask, request
+import request
+from telebot import types
 
-# Creating the bot
+hi = ["Hello", "Hi", "hi", "Привет"]
 TOKEN = '210719426:AAFGyWjfVT5eLUC1DnPmTS1iJkuL-FpOeP4'
-bot = telebot.TeleBot(TOKEN)
+
+bbot = telebot.TeleBot(TOKEN)
+
+@bbot.message_handler(commands=['start'])
+def keyb(message):
+    k = types.ReplyKeyboardMarkup()
+    k.row('1', '2', '3')
+    bbot.send_message(message.chat.id, "Выберите пункт", reply_markup=k)
 
 
-def select_response(message):
-	responses = ['Ie {} tio, no et canses?', '{}, eres un puto pesat de tio', 'Ie {}, ja hi ha prou que ja cansa',
-				'Collons {}, que pesat eres quan vols', "Que si {}, tio pesat, que ja t'hem llegit"]
+""""@bbot.message_handler(commands=["start"])
+def start(message):
+    bbot.send_message(message.chat.id, "Ты с нами " + message.chat.first_name)
+"""
 
-	response_to_use = random.choice(responses)
-	name = unicodedata.normalize('NFKD', message.from_user.first_name).encode('ascii','ignore')
-	response = response_to_use.format(name)
+@bbot.message_handler(content_types=["text"])
+def main(message):
+    if message.text in hi:
+        bbot.send_message(message.chat.id, random.choice(hi))
+    else:
+        #message.text != "Hi":
+        bbot.send_message(message.chat.id, "Не понятно...")
 
-	return response
-
-
-# The decorator (@bot.message_handler) indicates the type of messages that will activate this function
-# In this case, we'll activate it for every message. See telebot API for more possibilities 
-@bot.message_handler(func=lambda message: True)
-def pole_reply(message):
-	# If the message contains the word 'pole' (case insensitive), the bot replies
-	if 'pole' in message.text.lower():
-		resposta = select_response(message)
-		bot.reply_to(message, resposta)
 
 bot.delete_webhook()
 bot.polling(none_stop=True)
