@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-   
 import telebot
+import random
 from telebot import types
 
 hi = ["Hello", "Hi", "hi", "Привет"]
