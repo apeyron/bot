@@ -1,4 +1,4 @@
-import telebot
+﻿import telebot
 import random
 import os
 from flask import Flask, request
@@ -30,6 +30,4 @@ def main(message):
         #message.text != "Hi":
         bbot.send_message(message.chat.id, "Не понятно...")
 
-if __name__ == '__main__':
-    port = int(os.getenv('PORT', 80))
-    bbot.run(debug=False, port=port, host='0.0.0.0')
+bot.polling(none_stop=True)
