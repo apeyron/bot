@@ -31,5 +31,4 @@ def main(message):
         #message.text != "Hi":
         bbot.send_message(message.chat.id, "Не понятно...")
 
-if __name__ == "__main__":
-    bbot.polling(none_stop=True)
+bbot.polling(none_stop=True, interval=0)
