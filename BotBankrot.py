@@ -1,5 +1,8 @@
 import telebot
 import random
+import os
+from flask import Flask, request
+import request
 from telebot import types
 hi = ["Hello", "Hi", "hi", "Привет"]
 
