@@ -1,1 +1,1 @@
-worker: python botbankrot.ry
+worker: python bbot.py
