@@ -1,1 +1,1 @@
-web: python botbankrot.py
+worker: python botbankrot.py
