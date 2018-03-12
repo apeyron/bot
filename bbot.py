@@ -87,4 +87,5 @@ def search2(message):
         send = bbot.send_message(message.chat.id, "Введите новый запрос:")
         bbot.register_next_step_handler(send, ks)
 
-bbot.polling(none_stop=True)
+if __name__ == "__main__":
+    bbot.polling(none_stop=True, interval=0)
