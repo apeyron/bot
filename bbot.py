@@ -9,7 +9,6 @@ hi = ["Hello", "Hi", "hi", "Привет"]
 TOKEN = os.environ["TOK"]
 NAM = os.environ["NAME"]
 #data["name"] = NAM
-print(data)
 
 bbot = telebot.TeleBot(TOKEN)
 
