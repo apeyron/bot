@@ -6,11 +6,12 @@ from bs4 import BeautifulSoup
 from telebot import types
 hi = ["Hello", "Hi", "hi", "Привет"]
 
-TOKEN = os.environ['TOKEN']
-nam = os.environ['NAME']
-pas = os.environ['PASS']
+TOKEN = os.environ["TOK"]
+NAM = os.environ["NAME"]
+data = {'pass': '00000', 'form_id': 'user_login_block'}
+data["name"] = NAM
+
 bbot = telebot.TeleBot(TOKEN)
-data = dict(name=nam, pass=pas, form_id='user_login_block')
 
 @bbot.message_handler(commands=['start'])
 def keyb(message):
