@@ -3,12 +3,12 @@ import telebot
 import os
 import requests
 from bs4 import BeautifulSoup
+from BeautifulSoup import BeautifulSoup
 from telebot import types
 hi = ["Hello", "Hi", "hi", "Привет"]
 
 TOKEN = os.environ["TOK"]
 NAM = os.environ["NAME"]
-data = {'name': 'diga', 'pass': '00000', 'form_id': 'user_login_block'}
 #data["name"] = NAM
 print(data)
 
@@ -48,6 +48,7 @@ def ks (message):
     try:
         url = 'http://ktobankrot.ru'
         head = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko)  Safari/537.36'}
+        data = {'name': 'diga', 'pass': '00000', 'form_id': 'user_login_block'}
         ses = requests.Session()
         # Делаем переход к странице с авторизацией
         rs = ses.get(url)
