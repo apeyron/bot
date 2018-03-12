@@ -3,7 +3,6 @@ import telebot
 import os
 import requests
 from bs4 import BeautifulSoup
-from BeautifulSoup import BeautifulSoup
 from telebot import types
 hi = ["Hello", "Hi", "hi", "Привет"]
 
