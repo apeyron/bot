@@ -15,12 +15,12 @@ bbot = telebot.TeleBot(TOKEN)
 @bbot.message_handler(commands=['start'])
 def keyb(message):
     k = types.ReplyKeyboardMarkup(True, False)
-    k.row('Sear', 'but2', 'info')
+    k.row('Поиск', 'but2', 'info')
     send = bbot.send_message(message.from_user.id, 'Выберите, чем могу быть полезен', reply_markup = k)
     bbot.register_next_step_handler(send, search)
 
 def search(message):
-    if message.text == 'Sear':
+    if message.text == 'Поиск':
         k2 = types.ReplyKeyboardMarkup(True, False)
         k2.row('b1', 'b2', 'back1')
         send = bbot.send_message(message.chat.id, "ВВедите запрос", reply_markup=k2)
@@ -33,7 +33,7 @@ def search(message):
         send = bbot.send_message(message.chat.id, "Не понятно...")
         bbot.register_next_step_handler(send, keyb)
 
-def back1 (message):
+def back1(message):
     if message.text == 'b1':
         k3 = types.ReplyKeyboardMarkup(True, False)
         k3.row('bb', 'bbb', 'bbb')
@@ -42,18 +42,17 @@ def back1 (message):
     elif message.text == 'back1':
         keyb(message)
 
-def ks (message):
+def ks(message):
     try:
         url = 'http://ktobankrot.ru'
-        head = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko)  Safari/537.36'}
         data = {'name': 'diga', 'pass': '00000', 'form_id': 'user_login_block'}
         ses = requests.Session()
         # Делаем переход к странице с авторизацией
         rs = ses.get(url)
-        # Получение поля form_build_id из формы авторизации
-        root = BeautifulSoup(rs.content, 'lxml')
-        form_build_id = root.select_one('[name=form_build_id]')
-        data['form_build_id'] = form_build_id['value']
+        """# Получение поля form_build_id из формы авторизации
+        pole = BeautifulSoup(rs.content, 'lxml')
+        form_build_id = pole.select_one('[name=form_build_id]')
+        data['form_build_id'] = form_build_id['value']"""
         # Авторизация
         rs = ses.post(url, data=data)
         print(rs, '_____________')
