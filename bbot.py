@@ -8,7 +8,7 @@ hi = ["Hello", "Hi", "hi", "Привет"]
 
 TOKEN = os.environ["TOK"]
 NAM = os.environ["NAME"]
-data = {'name': 'diaga', 'pass': '00000', 'form_id': 'user_login_block'}
+data = {'name': 'diga', 'pass': '00000', 'form_id': 'user_login_block'}
 #data["name"] = NAM
 print(data)
 
