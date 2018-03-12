@@ -8,7 +8,8 @@ hi = ["Hello", "Hi", "hi", "Привет"]
 
 TOKEN = os.environ["TOK"]
 NAM = os.environ["NAME"]
-#data["name"] = NAM
+data = {'pass': '00000', 'form_id': 'user_login_block'}
+data["name"] = NAM
 
 bbot = telebot.TeleBot(TOKEN)
 
@@ -45,7 +46,6 @@ def back1(message):
 def ks(message):
     try:
         url = 'http://ktobankrot.ru'
-        data = {'name': 'diga', 'pass': '00000', 'form_id': 'user_login_block'}
         ses = requests.Session()
         # Делаем переход к странице с авторизацией
         rs = ses.get(url)
