@@ -15,12 +15,12 @@ bbot = telebot.TeleBot(TOKEN)
 @bbot.message_handler(commands=['start'])
 def keyb(message):
     k = types.ReplyKeyboardMarkup(True, False)
-    k.row('Поиск', 'but2', 'info')
+    k.row('Search', 'but2', 'info')
     send = bbot.send_message(message.from_user.id, 'Выберите, чем могу быть полезен', reply_markup = k)
     bbot.register_next_step_handler(send, search)
 
 def search(message):
-    if message.text == 'Поиск':
+    if message.text == 'Search':
         k2 = types.ReplyKeyboardMarkup(True, False)
         k2.row('b1', 'b2', 'back1')
         send = bbot.send_message(message.chat.id, "ВВедите запрос", reply_markup=k2)
