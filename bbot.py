@@ -10,6 +10,7 @@ TOKEN = os.environ["TOK"]
 NAM = os.environ["NAME"]
 data = {'pass': '00000', 'form_id': 'user_login_block'}
 data["name"] = NAM
+print(data)
 
 bbot = telebot.TeleBot(TOKEN)
 
