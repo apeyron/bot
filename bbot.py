@@ -56,6 +56,8 @@ def ks (message):
         data['form_build_id'] = form_build_id['value']
         # Авторизация
         rs = ses.post(url, data=data)
+        print(rs, '_____________')
+        bbot.send_message(message.chat.id, "Подготовка")
         # Поиск
         ss = ses.get(url + '/search?fulltext=' + message.text)
         # print(ss.text)
